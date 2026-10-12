@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vị thần của những quyết định (The Sovereign of Choice)</title>
+<meta name="theme-color" content="#07051a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbefb8'/%3E%3Cstop offset='1' stop-color='%23a9772a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='13' y='2' width='38' height='60' rx='5' fill='%23140f33' stroke='url(%23g)' stroke-width='2.6'/%3E%3Cpath d='M17 32Q32 17 47 32Q32 47 17 32Z' fill='none' stroke='url(%23g)' stroke-width='2.6'/%3E%3Ccircle cx='32' cy='32' r='5.5' fill='url(%23g)'/%3E%3Cpath d='M32 7v6M32 51v6M20 12l3 4M44 12l-3 4' stroke='url(%23g)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#05040f; --night:#0b0820; --indigo:#171046; --indigo2:#2b2070;
+  --gold1:#fbefb8; --gold2:#e2b857; --gold3:#a8782a; --gold4:#6e4c17;
+  --text:#efe6cf; --muted:#b9ad8e;
+  --gold-grad:linear-gradient(135deg,#8a6425 0%,#f6e3a1 22%,#c9962f 48%,#fbefb8 66%,#9b6e22 100%);
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,'Times New Roman',serif;
+  --display:'Playfair Display','Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --deco:'Cinzel Decorative','Cinzel','Playfair Display',Georgia,serif;
+  --corner-art:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23e2b857' stroke-linecap='round'%3E%3Cpath d='M3 3H34M3 3V34' stroke-width='2'/%3E%3Cpath d='M9 9H24M9 9V24' stroke-width='1' opacity='.8'/%3E%3C/g%3E%3Cg fill='%23fbefb8'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Cpath d='M40 3l3 3-3 3-3-3zM3 40l3 3-3 3-3-3z' fill='%23e2b857'/%3E%3C/g%3E%3C/svg%3E");
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{height:100%;background:#05040f;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;height:100%;position:relative;overflow:hidden;background:#05040f;color:var(--text);
+  font-family:var(--serif);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Background ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% 16%,#251a60 0%,#130e36 42%,#06041a 100%)}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.wheel{position:fixed;left:50%;top:50%;width:140vmin;height:140vmin;max-width:1300px;max-height:1300px;
+  transform:translate(-50%,-50%);z-index:1;pointer-events:none;opacity:.2}
+.wheel .spin-a{animation:spin 260s linear infinite}
+.wheel .spin-b{animation:spin 180s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 42%,rgba(2,1,10,.78) 100%)}
+
+/* ---------- Screens ---------- */
+.screen{position:absolute;inset:0;z-index:3;overflow-y:auto;overflow-x:hidden;
+  transition:opacity .9s ease,transform .9s ease,visibility .9s}
+.screen.hidden{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.03)}
+
+/* ---------- Shared ornament ---------- */
+.corner{position:absolute;width:44px;height:44px;background:var(--corner-art) no-repeat center/contain;pointer-events:none}
+.corner.tl{top:12px;left:12px}
+.corner.tr{top:12px;right:12px;transform:scaleX(-1)}
+.corner.bl{bottom:12px;left:12px;transform:scaleY(-1)}
+.corner.br{bottom:12px;right:12px;transform:scale(-1,-1)}
+.gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+.btn{position:relative;overflow:hidden;appearance:none;cursor:pointer;border:1px solid var(--gold3);border-radius:2px;
+  font-family:var(--display);font-weight:500;letter-spacing:.08em;color:var(--gold1);font-size:.95rem;
+  padding:.95em 2.1em;background:linear-gradient(180deg,rgba(64,46,150,.6),rgba(20,14,62,.92));
+  box-shadow:inset 0 0 0 3px #0c0828,inset 0 0 0 4px rgba(226,184,87,.5),0 6px 24px rgba(0,0,0,.5);
+  transition:box-shadow .35s,color .35s,border-color .35s,transform .2s}
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,244,200,.38),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn:hover,.btn:focus-visible{color:#fff;border-color:var(--gold1);
+  box-shadow:inset 0 0 0 3px #0c0828,inset 0 0 0 4px rgba(251,239,184,.85),0 0 28px rgba(251,239,184,.5),0 0 70px rgba(226,184,87,.3)}
+.btn:hover::after,.btn:focus-visible::after{left:130%}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn:focus-visible{outline:2px solid var(--gold1);outline-offset:4px}
+.btn small{display:block;font-family:var(--serif);font-style:italic;font-size:.78rem;letter-spacing:.06em;opacity:.8;margin-top:.15em}
+.btn-lg{font-size:1.25rem;padding:1em 3.2em}
+.ghost{appearance:none;background:none;border:1px solid rgba(226,184,87,.35);color:var(--muted);cursor:pointer;
+  font-family:var(--serif);font-size:.95rem;padding:.4em 1em;border-radius:2px;transition:color .3s,border-color .3s,box-shadow .3s}
+.ghost:hover,.ghost:focus-visible{color:var(--gold1);border-color:var(--gold2);box-shadow:0 0 18px rgba(226,184,87,.3);outline:none}
+
+/* ---------- Intro ---------- */
+#intro{display:grid;place-items:center;padding:clamp(16px,4vw,48px)}
+.scroll{position:relative;width:min(760px,100%);padding:3px;background:var(--gold-grad);border-radius:6px;
+  box-shadow:0 0 70px rgba(226,184,87,.18),0 30px 80px rgba(0,0,0,.65)}
+.scroll-in{position:relative;border-radius:4px;text-align:center;
+  padding:clamp(34px,5vw,60px) clamp(22px,5.5vw,64px) clamp(30px,4.5vw,52px);
+  background:linear-gradient(180deg,rgba(26,18,70,.97),rgba(9,6,28,.98));
+  outline:1px solid rgba(251,239,184,.35);outline-offset:-10px}
+.intro-eye{width:64px;height:auto;margin:0 auto 10px;display:block;filter:drop-shadow(0 0 12px rgba(226,184,87,.5))}
+.scroll h2{margin:.1em 0 0;font-family:var(--display);font-weight:700;font-size:clamp(1.55rem,4.6vw,2.4rem);line-height:1.2}
+.scroll .sub{margin:.3em 0 0;font-style:italic;color:var(--muted);font-size:1.05rem}
+.rule{display:flex;align-items:center;gap:14px;margin:22px auto;max-width:360px;color:var(--gold2)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}
+.rule span{font-size:.9rem}
+.steps{list-style:none;margin:0;padding:0;text-align:left;display:grid;gap:clamp(14px,2.4vw,22px)}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.num{width:2.5rem;height:2.5rem;border-radius:50%;display:grid;place-items:center;flex:none;
+  font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--gold1);
+  border:1px solid var(--gold2);box-shadow:inset 0 0 0 3px #0c0828,inset 0 0 0 4px rgba(226,184,87,.4),0 0 14px rgba(226,184,87,.2);
+  background:radial-gradient(circle,#2b2070,#120c36)}
+.steps p{margin:0;font-size:clamp(1.08rem,2.6vw,1.28rem);line-height:1.5;color:var(--text);padding-top:.2em;max-width:62ch}
+.steps b{color:var(--gold1);font-weight:600}
+.enter{margin-top:clamp(26px,4vw,40px)}
+
+/* ---------- Main ---------- */
+.main-wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;
+  padding:clamp(14px,3vh,28px) 16px clamp(14px,3vh,28px)}
+.topbar{width:100%;display:flex;justify-content:flex-end;min-height:2.2rem}
+header{text-align:center;margin-top:-1.4rem}
+.sigil{width:44px;margin:0 auto 6px;display:block;filter:drop-shadow(0 0 10px rgba(226,184,87,.55))}
+h1{margin:0;font-weight:700;line-height:1.15}
+.h1-vi{display:block;font-family:var(--display);font-size:clamp(1.7rem,5.4vw,3.1rem);
+  filter:drop-shadow(0 0 18px rgba(226,184,87,.3))}
+.h1-en{display:block;margin-top:.35em;font-family:var(--deco);font-weight:400;font-size:clamp(.78rem,2.2vw,1.05rem);
+  letter-spacing:.12em;color:var(--gold2)}
+.stage-area{--cw:clamp(120px,min(40vw,24vh),210px);flex:1;width:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;position:relative;min-height:calc(var(--cw)*1.6 + 130px)}
+.aura{position:absolute;left:50%;top:calc(50% - 30px);width:calc(var(--cw)*3.2);height:calc(var(--cw)*3.2);translate:-50% -50%;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(226,184,87,.3) 0%,rgba(110,80,220,.2) 38%,transparent 68%);
+  animation:breathe 5s ease-in-out infinite;transition:filter 1s}
+.aura.on{filter:brightness(1.9) saturate(1.3)}
+.aura.flash{animation:none;opacity:1;filter:brightness(3)}
+@keyframes breathe{0%,100%{opacity:.55;scale:.92}50%{opacity:1;scale:1.05}}
+.stage{position:relative;width:min(100%,720px);height:calc(var(--cw)*1.6 + 70px);perspective:1500px;perspective-origin:50% 42%;
+  display:grid;place-items:center}
+.deck{position:relative;width:var(--cw);height:calc(var(--cw)*1.6);transform-style:preserve-3d;cursor:pointer;outline:none;touch-action:manipulation}
+.deck:focus-visible{filter:drop-shadow(0 0 14px var(--gold1))}
+.c{position:absolute;left:50%;top:50%;width:var(--cw);height:calc(var(--cw)*1.6);
+  margin:calc(var(--cw)*-.8) 0 0 calc(var(--cw)*-.5);transform-style:preserve-3d;will-change:transform}
+.c i{position:absolute;inset:0;border-radius:calc(var(--cw)*.05);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--back-art) center/100% 100% no-repeat,#0b0820;box-shadow:0 0 0 1px rgba(226,184,87,.55)}
+.c i.r{transform:rotateY(180deg)}
+.status{margin-top:6px;min-height:3.6rem;text-align:center;opacity:0;transition:opacity .6s;pointer-events:none}
+.status.on{opacity:1}
+.status p{margin:0;font-family:var(--display);font-size:clamp(1rem,2.8vw,1.2rem);color:var(--gold1)}
+.status em{display:block;color:var(--muted);font-size:.95rem}
+.bar{width:min(240px,60vw);height:2px;margin:10px auto 0;background:rgba(226,184,87,.2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold-grad);transform-origin:left;transform:scaleX(0)}
+.hint{text-align:center;max-width:46ch;transition:opacity .6s;min-height:3.6rem;margin-top:6px}
+.hint.off{opacity:0}
+.hint p{margin:0;font-size:clamp(1.1rem,2.8vw,1.3rem);color:var(--text)}
+.hint em{display:block;color:var(--muted);font-size:.98rem;margin-top:.15em}
+.hint.pulse p{animation:hintpulse 2.8s ease-in-out infinite}
+@keyframes hintpulse{0%,100%{opacity:.7}50%{opacity:1}}
+
+/* ---------- Reveal ---------- */
+.reveal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;overflow:hidden;
+  padding:calc(env(safe-area-inset-top,0px) + 14px) 16px calc(env(safe-area-inset-bottom,0px) + 14px);
+  background:radial-gradient(circle at 50% 44%,rgba(42,30,104,.6),rgba(3,2,12,.93) 72%);
+  -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  opacity:0;visibility:hidden;transition:opacity .7s,visibility .7s}
+.reveal.show{opacity:1;visibility:visible}
+.rays{position:absolute;left:50%;top:44%;width:min(170vmin,1300px);aspect-ratio:1;translate:-50% -50%;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(251,239,184,.17) 0 3deg,transparent 3deg 11deg);
+  -webkit-mask:radial-gradient(circle,#000 0,transparent 66%);mask:radial-gradient(circle,#000 0,transparent 66%);
+  opacity:0;transition:opacity 1.6s 1s;animation:spin 50s linear infinite}
+.reveal.flipped .rays{opacity:1}
+.beam{position:absolute;top:-10vh;left:50%;width:min(80vw,520px);height:110vh;translate:-50% 0;pointer-events:none;opacity:0;filter:blur(8px);
+  background:linear-gradient(180deg,rgba(255,244,200,0),rgba(255,236,170,.42) 38%,rgba(255,236,170,0) 85%);
+  clip-path:polygon(43% 0,57% 0,100% 100%,0 100%)}
+.reveal.show .beam{animation:beam 2.6s ease-out .1s forwards}
+@keyframes beam{0%{opacity:0}30%{opacity:1}100%{opacity:.3}}
+.reveal-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3vh,26px)}
+.cardwrap{--w:min(80vw,340px,42vh);width:var(--w);height:calc(var(--w)*1.6);perspective:1700px;position:relative;opacity:0}
+.reveal.show .cardwrap{animation:arrive 1.4s cubic-bezier(.2,.8,.2,1) .15s forwards,floaty 6s ease-in-out 1.8s infinite}
+@keyframes arrive{0%{opacity:0;transform:translateY(34vh) scale(.4) rotate(-12deg)}55%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.cardwrap::before{content:"";position:absolute;inset:-18%;border-radius:50%;pointer-events:none;opacity:0;transition:opacity 1.5s .9s;
+  background:radial-gradient(circle,rgba(251,239,184,.5),rgba(226,184,87,.18) 45%,transparent 70%)}
+.reveal.flipped .cardwrap::before{opacity:1}
+.flipper{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(180deg)}
+.reveal.flipped .flipper{animation:flip 1.8s cubic-bezier(.35,.1,.2,1) forwards}
+@keyframes flip{0%{transform:rotateY(180deg) translateZ(0) scale(1)}50%{transform:rotateY(90deg) translateZ(140px) scale(1.08)}100%{transform:rotateY(0) translateZ(0) scale(1)}}
+.face{position:absolute;inset:0;border-radius:calc(var(--w)*.045);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.face.bk{transform:rotateY(180deg);background:var(--back-art) center/100% 100% no-repeat,#0b0820;
+  box-shadow:0 0 0 1px rgba(226,184,87,.6),0 0 50px rgba(226,184,87,.35)}
+.face.ft{container-type:inline-size;
+  background:radial-gradient(ellipse at 50% 28%,#2d2274 0%,#171046 48%,#0a0724 100%);
+  box-shadow:0 0 0 2px #c9962f,0 0 70px rgba(251,239,184,.4),0 30px 80px rgba(0,0,0,.7)}
+.ft-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:27cqw 11cqw 23cqw}
+.fr1{position:absolute;inset:2.6cqw;border:.6cqw solid;border-image:var(--gold-grad) 1;pointer-events:none}
+.fr2{position:absolute;inset:5.2cqw;border:.25cqw solid rgba(251,239,184,.5);pointer-events:none}
+.ft .corner{width:13cqw;height:13cqw}
+.ft .corner.tl{top:6.4cqw;left:6.4cqw}.ft .corner.tr{top:6.4cqw;right:6.4cqw}
+.ft .corner.bl{bottom:6.4cqw;left:6.4cqw}.ft .corner.br{bottom:6.4cqw;right:6.4cqw}
+.f-top{position:absolute;top:10.5cqw;left:50%;width:15cqw;translate:-50% 0}
+.f-label{position:absolute;top:27cqw;left:0;right:0;margin-top:-6.5cqw;font-family:var(--display);font-size:3.3cqw;letter-spacing:.14em;color:var(--gold2)}
+.vi{font-family:var(--display);font-weight:700;font-size:9.2cqw;line-height:1.24;text-wrap:balance;
+  background:linear-gradient(180deg,#fff6d2,#f0cf7a 60%,#d9a947);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 1.6cqw rgba(226,184,87,.4))}
+.divider{display:flex;align-items:center;gap:3cqw;width:62cqw;margin:6cqw 0 5cqw;color:var(--gold2);font-size:4cqw}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}
+.en{font-family:var(--serif);font-style:italic;font-weight:500;font-size:5.6cqw;line-height:1.32;color:#e0d6b8;text-wrap:balance}
+.f-moons{position:absolute;bottom:10.5cqw;left:50%;width:36cqw;translate:-50% 0}
+.vi,.divider,.en,.f-top,.f-label,.f-moons{opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s ease}
+.f-top,.f-moons{transform:none}
+.reveal.flipped .vi,.reveal.flipped .divider,.reveal.flipped .en,.reveal.flipped .f-top,.reveal.flipped .f-label,.reveal.flipped .f-moons{opacity:1;transform:none}
+.reveal.flipped .f-top{transition-delay:.9s}.reveal.flipped .f-label{transition-delay:1s}
+.reveal.flipped .vi{transition-delay:1.25s}.reveal.flipped .divider{transition-delay:1.8s}
+.reveal.flipped .en{transition-delay:2.1s}.reveal.flipped .f-moons{transition-delay:2.3s}
+.actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .9s,transform .9s}
+.reveal.flipped .actions{opacity:1;transform:none;pointer-events:auto;transition-delay:2.7s}
+#fx{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden}
+.sp{position:absolute;width:var(--s);height:var(--s);border-radius:50%;opacity:0;
+  background:radial-gradient(circle,#fff8d8 0,rgba(251,239,184,.85) 32%,transparent 70%);animation:rise var(--d) ease-out forwards}
+@keyframes rise{0%{opacity:0;transform:translate(0,0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.1)}}
+#flash{position:fixed;inset:0;z-index:24;pointer-events:none;background:radial-gradient(circle at 50% 44%,rgba(255,248,215,.9),rgba(255,236,170,.35) 40%,transparent 70%);opacity:0}
+#flash.go{animation:flash 1.4s ease-out}
+@keyframes flash{0%{opacity:0}18%{opacity:.85}100%{opacity:0}}
+
+@media (max-width:520px){
+  .corner{width:34px;height:34px}
+  .steps li{gap:12px}
+  .num{width:2.2rem;height:2.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .wheel .spin-a,.wheel .spin-b,.rays,.aura{animation:none}
+  .reveal.show .cardwrap{animation:arrive .6s ease .1s forwards}
+  .hint.pulse p{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<svg class="wheel" id="wheel" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ============ INTRO / GUIDE ============ -->
+<section id="intro" class="screen" aria-labelledby="introTitle">
+  <div class="scroll">
+    <div class="scroll-in">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <svg class="intro-eye" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbefb8"/><stop offset="1" stop-color="#a9772a"/></linearGradient></defs>
+        <g fill="none" stroke="url(#ig)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M6 32Q32 10 58 32Q32 54 6 32Z"/><circle cx="32" cy="32" r="10"/>
+          <path d="M32 2v8M32 54v8M12 10l4 6M52 10l-4 6"/></g>
+        <circle cx="32" cy="32" r="4.5" fill="url(#ig)"/>
+      </svg>
+      <h2 id="introTitle" class="gold-text">Trước khi chạm vào định mệnh</h2>
+      <p class="sub">Before you touch fate</p>
+      <div class="rule" aria-hidden="true"><span>✦</span></div>
+      <ol class="steps">
+        <li><span class="num" aria-hidden="true">I</span><p><b>Hãy nhắm mắt và tập trung điều bạn muốn hỏi</b></p></li>
+        <li><span class="num" aria-hidden="true">II</span><p><b>Hãy đặt một câu hỏi, câu hỏi đó nên được diễn đạt cụ thể, theo dạng lựa chọn.</b> Có thể nói ra thật lớn hoặc đơn thuần chỉ cần đặt câu hỏi trong đầu.</p></li>
+        <li><span class="num" aria-hidden="true">III</span><p><b>Hãy dùng ngón tay để chạm vào bộ bài,</b> và đấng bề trên sẽ liên kết với nó để giao tiếp với bạn, giúp đưa ra câu trả lời thoả đáng.</p></li>
+        <li><span class="num" aria-hidden="true">IV</span><p><b>Ứng với mỗi câu hỏi nên chỉ có một câu trả lời đầu tiên.</b></p></li>
+      </ol>
+      <div class="enter">
+        <button class="btn btn-lg" id="ready" type="button">Sẵn sàng<small>Ready · Enter</small></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAIN ============ -->
+<main id="main" class="screen hidden">
+  <div class="main-wrap">
+    <div class="topbar"><button class="ghost" id="helpBtn" type="button">Hướng dẫn</button></div>
+    <header>
+      <svg class="sigil" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round">
+          <path d="M6 32Q32 10 58 32Q32 54 6 32Z"/><circle cx="32" cy="32" r="10"/>
+          <path d="M32 2v8M32 54v8M12 10l4 6M52 10l-4 6"/></g>
+        <circle cx="32" cy="32" r="4.5" fill="#fbefb8"/>
+      </svg>
+      <h1><span class="h1-vi gold-text">Vị thần của những quyết định</span><span class="h1-en">(The Sovereign of Choice)</span></h1>
+    </header>
+
+    <section class="stage-area">
+      <div class="aura" id="aura" aria-hidden="true"></div>
+      <div class="stage" id="stage">
+        <div class="deck" id="deck" role="button" tabindex="0" aria-label="Bộ bài Tarot. Chạm vào để rút một lá bài."></div>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite">
+        <p>Đấng bề trên đang liên kết với bạn…</p>
+        <em>The higher power is connecting with you…</em>
+        <div class="bar"><i id="barFill"></i></div>
+      </div>
+      <div class="hint pulse" id="hint">
+        <p id="hintVi">Giữ câu hỏi trong tâm trí, rồi chạm vào bộ bài.</p>
+        <em id="hintEn">Hold your question in mind, then touch the deck.</em>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ REVEAL ============ -->
+<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="Lá bài được rút">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="reveal-inner">
+    <div class="cardwrap">
+      <div class="flipper">
+        <div class="face bk"></div>
+        <div class="face ft">
+          <div class="ft-in">
+            <div class="fr1"></div><div class="fr2"></div>
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <svg class="f-top" viewBox="0 0 64 40" aria-hidden="true">
+              <g fill="none" stroke="#e2b857" stroke-width="2.2" stroke-linecap="round">
+                <path d="M4 22Q32 0 60 22Q32 44 4 22Z"/><circle cx="32" cy="22" r="8.5"/><path d="M32 0v-0M32 2v3"/></g>
+              <circle cx="32" cy="22" r="3.6" fill="#fbefb8"/>
+            </svg>
+            <div class="f-label">Lời đáp · The Answer</div>
+            <div class="vi" id="cardVi"></div>
+            <div class="divider" aria-hidden="true">✦</div>
+            <div class="en" id="cardEn"></div>
+            <svg class="f-moons" viewBox="0 0 120 20" aria-hidden="true">
+              <g fill="none" stroke="#e2b857" stroke-width="1.2">
+                <circle cx="10" cy="10" r="6"/><circle cx="35" cy="10" r="6"/><circle cx="60" cy="10" r="6"/><circle cx="85" cy="10" r="6"/><circle cx="110" cy="10" r="6"/></g>
+              <circle cx="35" cy="10" r="6" fill="#e2b857" opacity=".35"/>
+              <path d="M60 4a6 6 0 0 1 0 12z" fill="#e2b857"/>
+              <circle cx="85" cy="10" r="6" fill="#e2b857" opacity=".35"/>
+              <circle cx="60" cy="10" r="6" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="againBtn" type="button">Rút bài lại</button>
+      <button class="btn" id="newBtn" type="button">Đặt câu hỏi mới</button>
+    </div>
+  </div>
+</div>
+<div id="flash" aria-hidden="true"></div>
+<div id="fx" aria-hidden="true"></div>
+<div class="sr" id="sr" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const clamp = (v,a=0,b=1) => Math.min(b,Math.max(a,v));
+const ease = t => t*t*(3-2*t);
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================= DATASET ================= */
+const tarotDatabase = [
+  { vi: "Mở lòng đón nhận", en: "Open your heart and receive" },
+  { vi: "Thứ bạn kỳ vọng sẽ khiến bạn thất vọng", en: "What you expect will disappoint you" },
+  { vi: "Tận dụng trí tưởng tượng", en: "Use your imagination" },
+  { vi: "Chuyện không như bạn nghĩ", en: "Things are not as you think" },
+  { vi: "Vượt tầm kiểm soát của bạn", en: "Beyond your control" },
+  { vi: "Đôi khi cần tham vọng hơn", en: "Sometimes you need to be more ambitious" },
+  { vi: "Mọi thứ tiến triển tốt", en: "Everything is progressing well" },
+  { vi: "Tìm kiếm sự thật", en: "Seek the truth" },
+  { vi: "Cứ đặt cược vào nó", en: "Place your bets on it" },
+  { vi: "Điểm yếu của bạn sẽ bộc lộ", en: "Your weaknesses will be exposed" },
+  { vi: "Điều tốt đẹp sẽ đến vào lúc bạn không mong đợi", en: "Good things will come when you least expect them" },
+  { vi: "Phụ thuộc vào bạn", en: "Up to you" },
+  { vi: "Đặt một mục tiêu mới", en: "Set a new goal" },
+  { vi: "Chắc chắn", en: "Definitely" },
+  { vi: "Cứ tin vào trực giác", en: "Trust your intuition" },
+  { vi: "Trong vài tuần tới", en: "In the next few weeks" },
+  { vi: "Bình tĩnh, và suy nghĩ cẩn trọng", en: "Stay calm and think carefully" },
+  { vi: "Bạn sẽ hạnh phúc với những gì bạn đã làm", en: "You will be happy with what you have done" },
+  { vi: "Kiên trì sẽ được đền đáp", en: "Persistence will be rewarded" },
+  { vi: "Niềm vui chỉ là tạm thời", en: "Joy is only temporary" },
+  { vi: "Đừng tò mò", en: "Don't be curious" },
+  { vi: "Sắp có bước tiến mới", en: "New progress is coming" },
+  { vi: "Bạn cần thích nghi", en: "You need to adapt" },
+  { vi: "Sẽ ổn thôi", en: "It will be fine" },
+  { vi: "Buông bỏ và hoà vào dòng chảy", en: "Let go and flow with the current" },
+  { vi: "Chờ đợi", en: "Wait" },
+  { vi: "Tập trung vào điều thực sự quan trọng", en: "Focus on what truly matters" },
+  { vi: "Quyết đoán", en: "Be decisive" },
+  { vi: "Loại giải pháp đầu tiên", en: "Eliminate the first solution" },
+  { vi: "Một điều mới mẻ sắp đến", en: "Something new is coming" },
+  { vi: "Đừng bỏ qua điều hiển nhiên", en: "Don't ignore the obvious" },
+  { vi: "Nghĩ thoáng ra", en: "Open your mind" },
+  { vi: "Đừng cố chống lại sự thay đổi", en: "Don't try to fight change" },
+  { vi: "Rủi ro rất có thể xảy ra", en: "Risks are very likely to occur" },
+  { vi: "Giữ một thái độ tích cực", en: "Keep a positive attitude" },
+  { vi: "Trừ khi bạn chỉ có một mình", en: "Unless you are alone" },
+  { vi: "Cứ tận hưởng", en: "Just enjoy" },
+  { vi: "Cái gì nhanh đến thì nhanh đi", en: "Easy come, easy go" },
+  { vi: "Xem xét lại cách tiếp cận của bạn", en: "Reconsider your approach" },
+  { vi: "Điều đó ảnh hưởng đến cách người khác nhìn nhận bạn", en: "It affects how others perceive you" },
+  { vi: "Không!", en: "No!" },
+  { vi: "Không thuận lợi ở thời điểm này", en: "Not favorable at this time" },
+  { vi: "Quyết liệt", en: "Be fierce" },
+  { vi: "Tốt hơn là không kỳ vọng", en: "Better not to have expectations" },
+  { vi: "Dù bạn làm gì, hệ quả cũng lâu dài", en: "Whatever you do, the consequences are long-lasting" },
+  { vi: "Thời điểm hoàn hảo", en: "The perfect time" },
+  { vi: "Hạ thấp cái tôi và bạn sẽ được nhiều hơn mất", en: "Lower your ego and you will gain more than you lose" },
+  { vi: "Tốt hơn là tiếp tục chờ đợi", en: "Better to keep waiting" },
+  { vi: "Ngưng phán xét", en: "Stop judging" },
+  { vi: "Cười về điều đó", en: "Laugh about it" },
+  { vi: "Đừng quá thận trọng", en: "Don't be too cautious" },
+  { vi: "Điều đó là sự lãng phí tiền bạc", en: "That is a waste of money" },
+  { vi: "Bạn cần sớm đưa ra quyết định", en: "You need to make a decision soon" },
+  { vi: "Đừng để ý kiến của người khác ảnh hưởng", en: "Don't let others' opinions influence you" },
+  { vi: "Bạn sẽ phải thoả hiệp", en: "You will have to compromise" },
+  { vi: "Nâng cấp bằng mọi cách bạn có thể", en: "Upgrade by any means possible" },
+  { vi: "Can đảm lên", en: "Be courageous" },
+  { vi: "Cứ đợi xem chuyện gì sẽ xảy ra", en: "Just wait and see what happens" },
+  { vi: "Giữ nó cho riêng bạn", en: "Keep it to yourself" },
+  { vi: "Nó là điều hiển nhiên phải làm", en: "It is the obvious thing to do" },
+  { vi: "Cân nhắc lại", en: "Reconsider" },
+  { vi: "Đừng đổ lỗi cho chính mình", en: "Don't blame yourself" },
+  { vi: "Ưu tiên những gì quan trọng", en: "Prioritize what is important" },
+  { vi: "Có!", en: "Yes!" },
+  { vi: "Cam kết càng mạnh mẽ, càng dễ thành công", en: "The stronger the commitment, the easier the success" },
+  { vi: "Kiểm soát cảm xúc", en: "Control your emotions" },
+  { vi: "Muộn còn hơn không", en: "Better late than never" },
+  { vi: "Mặc kệ đi", en: "Let it go" },
+  { vi: "Đừng lo lắng", en: "Don't worry" },
+  { vi: "Tìm kiếm thêm các lựa chọn khác", en: "Look for other options" },
+  { vi: "Các sự kiện đáng kinh ngạc có thể xảy ra", en: "Incredible events may happen" },
+  { vi: "Thời điểm tốt để bắt đầu những thứ mới mẻ", en: "A good time to start new things" },
+  { vi: "Rắc rối đã qua", en: "Trouble has passed" },
+  { vi: "Đặt niềm tin vào chính mình", en: "Put your faith in yourself" },
+  { vi: "Thời gian sẽ trả lời", en: "Time will tell" },
+  { vi: "Khó khăn cần đối mặt", en: "Difficulties to face" },
+  { vi: "Lắng nghe người bên cạnh", en: "Listen to the person next to you" },
+  { vi: "Hài lòng với hiện tại", en: "Content with the present" },
+  { vi: "Chuyện gì đến, sẽ đến", en: "Whatever happens, happens" },
+  { vi: "Cứ hành xử như bạn đã đạt được", en: "Act as if you have already achieved it" },
+  { vi: "Điều đó không có ý nghĩa gì", en: "That means nothing" },
+  { vi: "Suy nghĩ thực tế", en: "Think practically" },
+  { vi: "Bạn đã sẵn sàng", en: "You are ready" },
+  { vi: "Càng sớm càng tốt", en: "The sooner, the better" },
+  { vi: "Tiếp tục", en: "Continue" },
+  { vi: "Kiên định", en: "Stand firm" },
+  { vi: "Cầu được ước thấy", en: "Your wish will come true" },
+  { vi: "Tin vào phán đoán của mình", en: "Trust your judgment" },
+  { vi: "Nói với người ấy điều đó có ý nghĩa thế nào với bạn", en: "Tell that person what it means to you" },
+  { vi: "Suy nghĩ cẩn trọng", en: "Think carefully" },
+  { vi: "Tuyệt đối không", en: "Absolutely not" },
+  { vi: "Chủ động", en: "Be proactive" },
+  { vi: "Loại bỏ những trở ngại từ chính bạn", en: "Eliminate obstacles from within yourself" },
+  { vi: "Đừng đợi", en: "Don't wait" },
+  { vi: "Khẳng định mình", en: "Assert yourself" },
+  { vi: "Chỉ cần bạn nói lời cảm ơn", en: "Just say thank you" },
+  { vi: "Bạn biết bạn muốn gì", en: "You know what you want" },
+  { vi: "Giải quyết sớm", en: "Solve it early" },
+  { vi: "Quan sát kỹ và bạn sẽ có câu trả lời", en: "Observe closely and you will have your answer" },
+  { vi: "Nó sẽ mang lại may mắn", en: "It will bring good luck" },
+  { vi: "Lập một danh sách những điều “tại sao không”", en: "Make a 'why not' list" },
+  { vi: "Cảm xúc sẽ chi phối quyết định của bạn", en: "Emotions will govern your decision" },
+  { vi: "Không phải lúc thích hợp", en: "Not the right time" },
+  { vi: "Một điều bạn không mong đợi", en: "Something you didn't expect" },
+  { vi: "Đôi khi cần phải chấp nhận hi sinh", en: "Sometimes sacrifice is necessary" },
+  { vi: "Nếu bạn tin", en: "If you believe" },
+  { vi: "Cơ hội mới sẽ đến", en: "New opportunities will come" },
+  { vi: "Đừng do dự", en: "Don't hesitate" },
+  { vi: "Đánh đổi xứng đáng", en: "A worthwhile trade-off" },
+  { vi: "Có còn hơn không", en: "Something is better than nothing" },
+  { vi: "Đi theo sự dẫn dắt của người khác", en: "Follow others' guidance" },
+  { vi: "Bạn sắp gặp một người giải quyết được vấn đề", en: "You are about to meet someone who solves the problem" },
+  { vi: "Không đáng để gắng sức", en: "Not worth the effort" },
+  { vi: "Có thể", en: "Maybe" },
+  { vi: "Câu trả lời có thể đến bằng một ngôn ngữ khác", en: "The answer may come in another language" },
+  { vi: "Thổ lộ những điều bạn nghĩ", en: "Express what you think" },
+  { vi: "Đừng từ bỏ", en: "Don't give up" },
+  { vi: "Đừng yêu cầu nhiều hơn vào lúc này", en: "Don't ask for more right now" },
+  { vi: "Đừng đánh giá thấp bản thân", en: "Don't underestimate yourself" },
+  { vi: "Một bí mật sắp được đưa ra ánh sáng", en: "A secret is about to come to light" },
+  { vi: "Cái giá phải nhận sẽ đắt", en: "The price to pay will be high" },
+  { vi: "Đừng cố hiểu", en: "Don't try to understand" },
+  { vi: "Đã quá trễ", en: "Too late" },
+  { vi: "Khó nhưng đáng", en: "Hard but worth it" },
+  { vi: "Bạn sẽ thất vọng", en: "You will be disappointed" },
+  { vi: "Có thể yên tâm", en: "Can rest assured" },
+  { vi: "Nắm bắt cơ hội", en: "Seize the opportunity" },
+  { vi: "Kiên nhẫn", en: "Patience" },
+  { vi: "Rắc rối đang đến", en: "Trouble is coming" },
+  { vi: "Chân thành sẽ có kết quả", en: "Sincerity will yield results" },
+  { vi: "Dừng lại thôi", en: "Stop right there" },
+  { vi: "Một điều gì đó sắp quay trở lại", en: "Something is about to return" },
+  { vi: "Để đảm bảo có quyết định tốt nhất, cứ bình tĩnh", en: "To ensure the best decision, stay calm" },
+  { vi: "Có một kết nối quan trọng đến một tình huống khác", en: "There is an important connection to another situation" },
+  { vi: "Bạn đã đúng", en: "You were right" },
+  { vi: "Suy nghĩ cực đoan lúc này không giúp ích cho bạn", en: "Extreme thinking right now won't help you" },
+  { vi: "Không cần quá lo lắng", en: "No need to worry too much" },
+  { vi: "Đáng nghi", en: "Suspicious" },
+  { vi: "Đừng trì hoãn thêm nữa", en: "Don't delay any further" },
+  { vi: "Tin tốt sắp đến", en: "Good news is coming" },
+  { vi: "Đừng quá cứng nhắc", en: "Don't be too rigid" },
+  { vi: "Tiếp tục cố gắng", en: "Keep trying" },
+  { vi: "Đừng đặt cược", en: "Don't bet" },
+  { vi: "Cứ làm đi", en: "Just do it" },
+  { vi: "Chỉ phí thời gian", en: "Just a waste of time" },
+  { vi: "Thiết lập thứ tự ưu tiên", en: "Establish priorities" },
+  { vi: "Chắc chắn là không", en: "Definitely not" },
+  { vi: "Đừng miễn cưỡng", en: "Don't be reluctant" },
+  { vi: "Suy nghĩ đơn giản thôi", en: "Keep it simple" },
+  { vi: "Trong cái rủi có cái may", en: "Every cloud has a silver lining" },
+  { vi: "Hỏi mẹ bạn", en: "Ask your mom" },
+  { vi: "Không vấn đề gì", en: "No problem" },
+  { vi: "Hãy nói cho họ biết bạn cảm thấy thế nào", en: "Let them know how you feel" },
+  { vi: "Bạn phải đưa ra quyết định cuối cùng", en: "You must make the final decision" },
+  { vi: "Một người quan trọng sắp xuất hiện", en: "An important person is about to appear" },
+  { vi: "Đừng quên bạn phải luôn vui vẻ", en: "Don't forget you must always be happy" },
+  { vi: "Bước khỏi vùng an toàn", en: "Step out of your comfort zone" },
+  { vi: "Hành động ngay", en: "Act now" },
+  { vi: "Nếu bạn làm như bạn đã nói", en: "If you do as you said" },
+  { vi: "Cố gắng thêm", en: "Try a little harder" },
+  { vi: "Lắng nghe cẩn thận và bạn sẽ có câu trả lời", en: "Listen carefully and you will have the answer" },
+  { vi: "Suy nghĩ tích cực", en: "Think positively" },
+  { vi: "Điều đó không hợp lý", en: "That doesn't make sense" },
+  { vi: "Trân trọng thứ mà bạn có", en: "Cherish what you have" },
+  { vi: "Bất kể chuyện gì", en: "No matter what" },
+  { vi: "Niềm tin của bạn có thể bị phản bội", en: "Your trust may be betrayed" },
+  { vi: "Không lường trước được", en: "Unforeseeable" },
+  { vi: "Nếu bạn không chịu đựng được", en: "If you can't endure it" },
+  { vi: "Từ bỏ là lựa chọn tốt", en: "Giving up is a good choice" },
+  { vi: "Điều đó sẽ làm cho mọi thứ thú vị", en: "That will make things interesting" },
+  { vi: "Tự lượng sức mình", en: "Know your limits" },
+  { vi: "Bạn sẽ biết thứ bạn muốn biết", en: "You will know what you want to know" },
+  { vi: "Cố gắng thêm một lần nữa", en: "Try one more time" }
+];
+
+/* ================= CARD BACK ART (shared) ================= */
+(function(){
+  let rays='';
+  for(let k=0;k<24;k++){const a=k*15*Math.PI/180;
+    rays+=`<line x1='${(125+34*Math.cos(a)).toFixed(1)}' y1='${(200+34*Math.sin(a)).toFixed(1)}' x2='${(125+118*Math.cos(a)).toFixed(1)}' y2='${(200+118*Math.sin(a)).toFixed(1)}'/>`;}
+  const star=(x,y,s)=>`<path transform='translate(${x} ${y}) scale(${s})' d='M0-9Q1-1 9 0Q1 1 0 9Q-1 1-9 0Q-1-1 0-9Z' fill='url(#g)'/>`;
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 400'><defs>
+  <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#8a6425'/><stop offset='.3' stop-color='#f6e3a1'/><stop offset='.55' stop-color='#c9962f'/><stop offset='.8' stop-color='#fbefb8'/><stop offset='1' stop-color='#9b6e22'/></linearGradient>
+  <radialGradient id='b' cx='.5' cy='.5' r='.75'><stop offset='0' stop-color='#2c2077'/><stop offset='.6' stop-color='#171046'/><stop offset='1' stop-color='#090620'/></radialGradient></defs>
+  <rect width='250' height='400' fill='url(#b)'/>
+  <rect x='7' y='7' width='236' height='386' rx='9' fill='none' stroke='url(#g)' stroke-width='3'/>
+  <rect x='16' y='16' width='218' height='368' rx='5' fill='none' stroke='#e2b857' stroke-opacity='.6'/>
+  <g stroke='#e2b857' stroke-opacity='.3'>${rays}</g>
+  <circle cx='125' cy='200' r='118' fill='none' stroke='url(#g)' stroke-width='1.4'/>
+  <circle cx='125' cy='200' r='96' fill='none' stroke='#e2b857' stroke-opacity='.6'/>
+  <circle cx='125' cy='200' r='72' fill='none' stroke='#e2b857' stroke-opacity='.7' stroke-dasharray='2 5'/>
+  <path d='M62 200Q125 148 188 200Q125 252 62 200Z' fill='#0a0722' stroke='url(#g)' stroke-width='2.6'/>
+  <circle cx='125' cy='200' r='27' fill='none' stroke='url(#g)' stroke-width='2.6'/>
+  <circle cx='125' cy='200' r='12' fill='url(#g)'/><circle cx='120' cy='195' r='3.2' fill='#fff8d8'/>
+  <circle cx='125' cy='62' r='20' fill='url(#g)'/><circle cx='133' cy='57' r='17' fill='#181048'/>
+  <circle cx='125' cy='338' r='20' fill='url(#g)'/><circle cx='117' cy='343' r='17' fill='#181048'/>
+  ${star(40,44,1)}${star(210,44,1)}${star(40,356,1)}${star(210,356,1)}${star(125,112,.6)}${star(125,288,.6)}
+  </svg>`;
+  document.documentElement.style.setProperty('--back-art',`url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+})();
+
+/* ================= ASTROLOGICAL WHEEL ================= */
+(function(){
+  const z=['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'].map(s=>s+'\uFE0E');
+  const rn=[...'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ'];
+  const pt=(r,a)=>{const t=a*Math.PI/180;return `${(r*Math.sin(t)).toFixed(1)},${(-r*Math.cos(t)).toFixed(1)}`;};
+  let a='<g fill="none" stroke="#e2b857" stroke-width="1.4"><circle r="492"/><circle r="472" stroke-width=".8"/><circle r="432"/><circle r="384" stroke-width=".8"/><circle r="336"/>';
+  for(let k=0;k<72;k++) a+=`<line y1="-472" y2="-486" transform="rotate(${k*5})" stroke-width=".8"/>`;
+  for(let k=0;k<12;k++) a+=`<line y1="-432" y2="-472" transform="rotate(${k*30+15})"/>`;
+  a+='</g><g fill="#e2b857" fill-opacity=".85" text-anchor="middle" dominant-baseline="central" font-family="\'Noto Sans Symbols\',\'Noto Sans Symbols 2\',\'Segoe UI Symbol\',\'Apple Symbols\',serif" font-size="30">';
+  z.forEach((g,k)=>a+=`<text transform="rotate(${k*30}) translate(0 -452)">${g}</text>`);
+  a+='</g><g fill="#e2b857" fill-opacity=".75" text-anchor="middle" dominant-baseline="central" font-family="\'Noto Sans Runic\',\'Segoe UI Historic\',\'Apple Symbols\',serif" font-size="24">';
+  rn.forEach((g,k)=>a+=`<text transform="rotate(${k*15}) translate(0 -360)">${g}</text>`);
+  a+='</g>';
+  let b='<g fill="none" stroke="#e2b857" stroke-width="1.2">';
+  b+=`<polygon points="${[0,120,240].map(d=>pt(330,d)).join(' ')}"/><polygon points="${[60,180,300].map(d=>pt(330,d)).join(' ')}"/>`;
+  b+='<circle r="220"/><circle r="168" stroke-dasharray="3 7"/><circle r="110"/>';
+  for(let k=0;k<8;k++) b+=`<line y1="-110" y2="-220" transform="rotate(${k*45})" stroke-width=".8"/>`;
+  b+=`<polygon points="${[0,90,180,270].map(d=>pt(200,d)).join(' ')}" stroke-width=".8"/><polygon points="${[45,135,225,315].map(d=>pt(200,d)).join(' ')}" stroke-width=".8"/></g>`;
+  $('#wheel').innerHTML=`<g class="spin-a">${a}</g><g class="spin-b">${b}</g>`;
+})();
+
+/* ================= STARFIELD ================= */
+const cv=$('#stars'), cx=cv.getContext('2d');
+let stars=[], SW=0, SH=0, DPR=1;
+function initStars(){
+  DPR=Math.min(2,window.devicePixelRatio||1);
+  SW=cv.width=Math.floor(innerWidth*DPR); SH=cv.height=Math.floor(innerHeight*DPR);
+  const n=Math.round(innerWidth*innerHeight/8500);
+  stars=Array.from({length:n},()=>({x:Math.random()*SW,y:Math.random()*SH,r:(Math.random()*1.2+.3)*DPR,
+    p:Math.random()*6.28,s:Math.random()*1.4+.4,g:Math.random()<.35}));
+}
+function drawStars(now){
+  cx.clearRect(0,0,SW,SH);
+  const t=now/1000*(RM?.15:1);
+  for(const s of stars){
+    const al=.25+.75*(.5+.5*Math.sin(t*s.s+s.p));
+    cx.globalAlpha=al; cx.fillStyle=s.g?'#f6e3a1':'#dcd6ff';
+    cx.beginPath(); cx.arc(s.x,s.y,s.r,0,6.283); cx.fill();
+  }
+  cx.globalAlpha=1;
+}
+
+/* ================= 3D DECK ================= */
+const N=28, SP=1.7;
+const deck=$('#deck'), aura=$('#aura'), status=$('#status'), barFill=$('#barFill'), hint=$('#hint');
+const cards=[];
+for(let i=0;i<N;i++){
+  const c=document.createElement('div'); c.className='c'; c.innerHTML='<i></i><i class="r"></i>';
+  deck.appendChild(c); cards.push(c);
+}
+let CW=200;
+function measure(){ CW=cards[0].offsetWidth||200; }
+
+let angle=0, tilt=-10, mode='idle', shuffleStart=0, busy=false, mainVisible=false, lastIdx=-1, lastSpark=0;
+const SHUFFLE_MS=5000;
+
+function layoutCards(now,t){
+  for(let i=0;i<N;i++){
+    const u=i-(N-1)/2;
+    let x=0, y=Math.sin(now/650+i*.28)*1.3, z=u*SP, rz=0, ry=0;
+    if(t>=0){
+      const f=ease(clamp(t/.2))*(1-ease(clamp((t-.8)/.2)));
+      x+=u*CW*.03*f; y+=u*u*CW*.0022*f; rz+=u*2.6*f;
+      const r=Math.sin(Math.PI*clamp((t-.18)/.64));
+      const side=i%2?1:-1, ph=t*Math.PI*7+i*.32;
+      x+=side*CW*.3*r*Math.sin(ph);
+      y-=CW*.2*r*Math.max(0,Math.sin(t*Math.PI*10-i*.5));
+      rz+=side*9*r*Math.sin(ph);
+      z+=side*CW*.12*r*Math.sin(ph+1.2);
+      ry+=side*10*r*Math.cos(ph);
+    }
+    cards[i].style.transform=`translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,${z.toFixed(2)}px) rotateZ(${rz.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+  }
+}
+
+function spawn(n,cxp,cyp,spread,dist,sizeMin=4,sizeMax=11,dur=1800){
+  const fx=$('#fx');
+  for(let k=0;k<n;k++){
+    const s=document.createElement('span'); s.className='sp';
+    const a=Math.random()*6.283, d=dist*(.35+Math.random()*.65);
+    const size=sizeMin+Math.random()*(sizeMax-sizeMin);
+    s.style.cssText=`left:${cxp+(Math.random()-.5)*spread}px;top:${cyp+(Math.random()-.5)*spread}px;--s:${size}px;--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d-dist*.25}px;--d:${dur*(.7+Math.random()*.6)}ms`;
+    fx.appendChild(s); setTimeout(()=>s.remove(),dur*1.4);
+  }
+}
+function deckCenter(){ const r=$('#stage').getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; }
+
+let prev=performance.now();
+function frame(now){
+  const dt=Math.min(50,now-prev); prev=now;
+  drawStars(now);
+  if(mainVisible){
+    if(mode==='idle'){
+      angle+=dt*(RM?.004:.0257); if(angle>360) angle-=360;
+      tilt+=((-10+Math.sin(now/1500)*3)-tilt)*Math.min(1,dt/200);
+      layoutCards(now,-1);
+    } else {
+      const t=clamp((now-shuffleStart)/SHUFFLE_MS);
+      const target=Math.round(angle/360)*360;
+      angle+=(target-angle)*Math.min(1,dt/170);
+      tilt+=(-6-tilt)*Math.min(1,dt/200);
+      layoutCards(now,t);
+      barFill.style.transform=`scaleX(${t})`;
+      if(now-lastSpark>110){ lastSpark=now; const c=deckCenter(); spawn(2,c.x,c.y,CW*1.4,CW*.9,3,8,1700); }
+      if(t>=.92 && !aura.classList.contains('flash')) aura.classList.add('flash');
+      if(t>=1){ mode='idle'; angle=((angle%360)+360)%360; finishShuffle(); }
+    }
+    const bob=Math.sin(now/900)*6;
+    deck.style.transform=`translateY(${bob.toFixed(2)}px) rotateX(${tilt.toFixed(2)}deg) rotateY(${angle.toFixed(2)}deg)`;
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ================= FLOW ================= */
+function drawIndex(){
+  const a=new Uint32Array(1); let idx;
+  do{ (window.crypto||window.msCrypto).getRandomValues(a); idx=a[0]%tarotDatabase.length; }
+  while(idx===lastIdx && tarotDatabase.length>1);
+  lastIdx=idx; return idx;
+}
+function startShuffle(){
+  if(busy) return; busy=true;
+  hint.classList.add('off'); status.classList.add('on'); aura.classList.add('on');
+  barFill.style.transform='scaleX(0)';
+  mode='shuffle'; shuffleStart=performance.now();
+}
+function finishShuffle(){
+  status.classList.remove('on'); aura.classList.remove('on');
+  setTimeout(()=>aura.classList.remove('flash'),400);
+  showReveal(tarotDatabase[drawIndex()]);
+}
+const reveal=$('#reveal');
+let revealTimers=[];
+function showReveal(card){
+  $('#cardVi').textContent=card.vi;
+  $('#cardEn').textContent=card.en;
+  $('#sr').textContent=`Lá bài của bạn: ${card.vi}. ${card.en}.`;
+  reveal.classList.remove('flipped');
+  reveal.classList.add('show');
+  revealTimers.push(setTimeout(()=>{
+    reveal.classList.add('flipped');
+    $('#flash').classList.remove('go'); void $('#flash').offsetWidth; $('#flash').classList.add('go');
+    const w=innerWidth, h=innerHeight;
+    revealTimers.push(setTimeout(()=>spawn(70,w/2,h*.44,60,Math.min(w,h)*.55,4,13,2400),700));
+    revealTimers.push(setTimeout(()=>spawn(30,w/2,h*.44,200,Math.min(w,h)*.35,3,9,2800),1500));
+  },1400));
+  revealTimers.push(setTimeout(()=>{ if(reveal.classList.contains('show')) $('#againBtn').focus({preventScroll:true}); },4600));
+}
+function closeReveal(){
+  revealTimers.forEach(clearTimeout); revealTimers=[];
+  reveal.classList.remove('show','flipped');
+}
+function setHint(vi,en){ $('#hintVi').textContent=vi; $('#hintEn').textContent=en; }
+
+deck.addEventListener('click',startShuffle);
+deck.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); startShuffle(); } });
+$('#againBtn').addEventListener('click',()=>{
+  closeReveal(); busy=false;
+  setTimeout(startShuffle,350);
+});
+$('#newBtn').addEventListener('click',()=>{
+  closeReveal(); busy=false;
+  setHint('Hãy đặt một câu hỏi mới trong tâm trí, rồi chạm vào bộ bài.','Ask a new question in your mind, then touch the deck.');
+  hint.classList.remove('off');
+  setTimeout(()=>deck.focus({preventScroll:true}),500);
+});
+
+function showScreen(name){
+  const intro=$('#intro'), main=$('#main');
+  const toMain=name==='main';
+  intro.classList.toggle('hidden',toMain); main.classList.toggle('hidden',!toMain);
+  mainVisible=toMain;
+  (toMain?main:intro).scrollTop=0;
+  if(toMain){ measure(); setTimeout(()=>deck.focus({preventScroll:true}),700); }
+  else { setTimeout(()=>$('#ready').focus({preventScroll:true}),700); }
+}
+$('#ready').addEventListener('click',()=>{
+  setHint('Giữ câu hỏi trong tâm trí, rồi chạm vào bộ bài.','Hold your question in mind, then touch the deck.');
+  showScreen('main');
+});
+$('#helpBtn').addEventListener('click',()=>{ if(!busy) showScreen('intro'); });
+window.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && reveal.classList.contains('flipped')) $('#newBtn').click();
+});
+window.addEventListener('resize',()=>{ initStars(); measure(); });
+
+initStars(); measure();
+requestAnimationFrame(frame);
+setTimeout(()=>$('#ready').focus({preventScroll:true}),400);
+})();
+</script>
+</body>
+</html>
